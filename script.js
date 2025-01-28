@@ -4,4 +4,11 @@ function getComputerChoice() {
     return choices[randomNumber];
 }
 
-console.log(getComputerChoice());
+function getHumanChoice() {
+    let choice = prompt("Choose either rock, paper or scissors").toLowerCase();
+    if (choice === 'rock' || choice === 'paper' || choice === 'scissors') {
+        return choice;
+    } else {
+        getHumanChoice();
+    }
+}
