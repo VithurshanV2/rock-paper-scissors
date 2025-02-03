@@ -25,15 +25,31 @@ function playRound(humanChoice, computerChoice) {
         computerScore++;
         roundResult = `You lose! ${computerChoice} beats ${humanChoice}`;
     }
-    else if (computerChoice === 'rock' && humanChoice === 'paper' || computerChoice === 'paper' && humanChoice === 'scissors' || computerChoice === 'scissors' && humanChoice === 'rock') {
+    else {
         humanScore++;
         roundResult = `You win! ${humanChoice} beats ${computerChoice}`;
     }
+
+    console.log(roundResult);
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+    humanScore = 0;
+    computerScore = 0;
 
-playRound(humanSelection, computerSelection);
+    for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+    }
 
-console.log(roundResult);
+    if (humanScore > computerScore) {
+        console.log("Congratulations! You won");
+    } else if (computerScore > humanScore) {
+        console.log("Defeat! You lost");
+    } else {
+        console.log("Tie! Well played");
+    }
+}
+
+playGame();
